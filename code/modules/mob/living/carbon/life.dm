@@ -143,6 +143,8 @@
 	if(!(mobility_flags & MOBILITY_STAND) || force_drown)
 		if (HAS_TRAIT(src, TRAIT_NOBREATH) || HAS_TRAIT(src, TRAIT_WATERBREATHING))
 			return TRUE
+		if(istype(loc, /turf/open/water/bath))
+			return TRUE
 		if(stat == DEAD && client)
 			record_round_statistic(STATS_PEOPLE_DROWNED)
 		var/drown_damage = has_world_trait(/datum/world_trait/abyssor_rage) ? 10 : 5
